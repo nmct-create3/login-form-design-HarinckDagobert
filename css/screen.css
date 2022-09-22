@@ -2,11 +2,53 @@
 #FONTS
 \*------------------------------------*/
 
+@font-face {
+    font-family: "Inter Web";
+    src: url("../fonts/Inter-Regular.woff2") format("woff2");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Inter Web";
+    src: url("../fonts/Inter-SemiBold.woff2") format("woff2");
+    font-weight: 700;
+}
+
 /*------------------------------------*\
 #Variables
 \*------------------------------------*/
 
-:root {}
+:root {
+    --global-color-alpha-light: #4F95FF;
+    --global-color-alpha: #3385FF;
+    --global-color-alpha-dark: #2E77E6;
+    --global-color-alpha-vry-dark: #1B4186;
+    --global-color-transparent: #3385FF;
+    --global-color-x-transparent: #3385FF;
+
+    --global-color-neutral-xxxx-light: #F5F6FA;
+    --global-color-neutral-xxx-light: #E2E3E7;
+    --global-color-neutral-xx-light: #CACCD4;
+    --global-color-neutral-x-light: #B5B6C0;
+    --global-color-neutral-light: #A0A1AD;
+    --global-color-neutral: #8B8C9A;
+    --global-color-neutral-dark: #757787;
+    --global-color-neutral-x-dark: #606274;
+    --global-color-neutral-xx-dark: #4B4C60;
+    --global-color-neutral-xxx-dark: #35374D;
+    --global-color-neutral-xxxx-dark: #20223A;
+
+    --global-baseline: 8px;
+    --global-whitespace-xs: calc(var(--global-baseline) / 2);/* = 4px */
+    --global-whitespace-sm: calc(var(--global-baseline));/* = 8px */
+    --global-whitespace-md: calc(var(--global-baseline) * 2);/* = 16px */
+    --global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
+    --global-whitespace-lg: calc(var(--global-baseline) * 4);/* = 32px */
+    --global-whitespace-xl: calc(var(--global-whitespace) * 2);/* = 48px */    
+    --global-whitespace-xl: calc(var(--global-whitespace-md) * 2);/* = 48px */
+
+    --global-color-alpha-rgb: 51 133 255
+}
 
 /* CSS variables here */
 
@@ -23,12 +65,13 @@
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
-    color: grey;
+    font-family: "Inter Web", Helvetica, arial, sans-serif;
+    color: var(--global-color-neutral-xxxx-dark);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: white;
+    background-color: var(--global-color-neutral-xxxx-light);
+    accent-color: var(--global-color-alpha)
 }
 
 *,
@@ -45,13 +88,13 @@ html {
 */
 
 ::-moz-selection {
-    background: HotPink;
+    background: var(--global-color-alpha);
     color: white;
     text-shadow: none;
 }
 
 ::selection {
-    background: HotPink;
+    background: var(--global-color-alpha);
     color: white;
     text-shadow: none;
 }
@@ -156,18 +199,23 @@ hr {
 }
 
 a {
-    color: HotPink;
+    color: var(--global-color-alpha);
     transition: all .1s ease-in-out;
 }
 
 a:visited,
 a:active {
-    color: HotPink;
+    color: var(--global-color-alpha);
 }
 
 a:hover,
 a:focus {
-    color: DeepPink;
+    color: var(--global-color-alpha-light);
+}
+
+label,
+input {
+    display: block;
 }
 
 /*------------------------------------*\
@@ -186,6 +234,9 @@ a:focus {
 }
 
 .o-row--login {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
     /* stuff here to align the card */
 }
 
@@ -431,40 +482,123 @@ a:focus {
     ---
     Website main logo
 */
+.c-logo {
+    height: 24px;
+    display: flex;
+    justify-content: center;
+}
 
+.c-logo__symbol {
+    height: 100%;
+}
+
+
+.c-logo__path--1 {
+    fill: var(--global-color-neutral-xxxx-dark);
+}
+
+.c-logo__path--2 {
+    fill: var(--global-color-alpha);
+}
+
+.c-logo__path--3 {
+    fill: var(--global-color-alpha-vry-dark);
+}
 /*
     Component: Card
     ---
     Card with box shadow
 */
 
+.c-card {
+    background-color: white;
+    border-radius: 1px;
+    box-shadow: 0 2px 4px rgba(0 0 0 / .1);
+}
+
+.c-card__body{
+    padding: 24px 48px;
+}
+
+.c-card__title{
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 21px;
+    padding-top: 48px;
+    /* margin: 0; */
+}
+
+.c-card__footer{
+    display: flex;
+    justify-content: center;
+    border-top:1px solid var(--global-color-neutral-xxx-light);
+    padding-top: 24px;
+}
 /*
     Component: Forms
     ---
     Everything form related here
 */
-
+.c-form-field--option {
+    display: flex;
+    gap: 8px;
+}
 /*
     Component: Input
     ---
     Class to put on all input="text" like form inputs
 */
 
-.c-input {}
+.c-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    border: 1px solid var(--global-color-neutral-xxx-light);
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 11px 16px;
+    outline: none;
+}
 
-.c-input:focus {}
+.c-input:focus {
+    border-color: var(--global-color-alpha);
+    box-shadow: 0 0 0 3px rgba(var(--global-color-alpha-rgb), .3);
 
+    
+
+}
 /*
     Component: Label
     ---
     Class to put on all form labels
 */
 
-.c-label {}
+.c-
+/*
+    Component: Label
+    ---
+    Class to put on all form labels
+*/
 
+.c-label {
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 8px;
+    color: var(--global-color-neutral-x-dark);
+}
+
+.c-label--checkbox {
+    margin-bottom: 0;
+    margin-left: 8px;
+}
 /* If a input is focused within the form-field class change te color of the label */
 
 .c-form-field:focus-within .c-label {}
+
 
 /*
     Component: Button
@@ -472,15 +606,32 @@ a:focus {
     Class to put on form buttons or links
 */
 
-.c-button {}
+.c-button {
+    width: 100%;
+    border: 1px solid var(--global-color-alpha-dark);
+    background-color: var(--global-color-alpha);
+    color: white;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 11px 16px;
+    outline: none;
+    transition: all .1s ease;
+}
 
-.c-button:hover {}
+.c-button:hover {
+    background-color: var(--global-color-alpha-light);
+}
 
-.c-button:focus {}
+.c-button:focus {
+    box-shadow: 0 0 0 3px rgba(var(--global-color-alpha-rgb), .3);
+}
 
-.c-button:active {}
-
-.c-button--block {}
+.c-button:active {
+    background-color: var(--global-color-alpha-dark);
+    box-shadow: none;
+}
 
 /*------------------------------------*\
 #UTILITIES
@@ -534,6 +685,14 @@ a:focus {
     margin-bottom: 48px !important;
 }
 
+
+.u-fs-sm {
+    font-size: 14px;
+}
+
+.u-clr-drkgr {
+    color: var(--global-color-neutral-dark);
+}
 /*
     Utilities: max-width
     ---
