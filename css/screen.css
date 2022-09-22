@@ -38,7 +38,12 @@
     --global-color-neutral-xxx-dark: #35374D;
     --global-color-neutral-xxxx-dark: #20223A;
 
+
     --global-baseline: 8px;
+    --global-borderwidth: calc(var(--global-baseline)/8);
+    --global-borderradius : calc(var(--global-borderwidth)*3);
+    --global-padding : calc(var(--global-baseline)+5);
+    --global-font-size: calc(var(--global-baseline)*2);
     --global-whitespace-xs: calc(var(--global-baseline) / 2);/* = 4px */
     --global-whitespace-sm: calc(var(--global-baseline));/* = 8px */
     --global-whitespace-md: calc(var(--global-baseline) * 2);/* = 16px */
@@ -63,7 +68,7 @@
 */
 
 html {
-    font-size: 16px;
+    font-size: var(--global-font-size);
     line-height: 1.5;
     font-family: "Inter Web", Helvetica, arial, sans-serif;
     color: var(--global-color-neutral-xxxx-dark);
@@ -188,7 +193,7 @@ figcaption {
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
-    margin-top: 8px;
+    margin-top: var(--global-baseline);
 }
 
 hr {
@@ -243,19 +248,19 @@ input {
 /* size modifiers */
 
 .o-row--lg {
-    padding-top: 48px;
+    padding-top: var(--global-whitespace-xl);
     padding-bottom: 24px;
 }
 
 .o-row--xl {
     padding-top: 72px;
-    padding-bottom: 48px;
+    padding-bottom: var(--global-whitespace-xl);
 }
 
 @media (min-width: 768px) {
     .o-row {
-        padding-left: 48px;
-        padding-right: 48px;
+        padding-left: var(--global-whitespace-xl);
+        padding-right: var(--global-whitespace-xl);
     }
 }
 
@@ -298,7 +303,7 @@ input {
 
     .o-section--lg+.o-section--lg,
     .o-section--xl+.o-section--xl {
-        padding-top: 48px;
+        padding-top: var(--global-whitespace-lg);
     }
 }
 
@@ -512,7 +517,7 @@ input {
 
 .c-card {
     background-color: white;
-    border-radius: 1px;
+    border-radius: var(--global-borderradius);
     box-shadow: 0 2px 4px rgba(0 0 0 / .1);
 }
 
@@ -555,10 +560,10 @@ input {
     -moz-appearance: none;
     appearance: none;
     width: 100%;
-    border: 1px solid var(--global-color-neutral-xxx-light);
-    border-radius: 3px;
+    border: var(--global-borderwidth) solid var(--global-color-neutral-xxx-light);
+    border-radius: var(--global-borderradius);
     font-family: inherit;
-    font-size: 16px;
+    font-size: var(--global-font-size);
     line-height: 24px;
     padding: 11px 16px;
     outline: none;
@@ -587,13 +592,13 @@ input {
 .c-label {
     font-size: 14px;
     line-height: 16px;
-    margin-bottom: 8px;
+    margin-bottom: var(--global-whitespace-sm);
     color: var(--global-color-neutral-x-dark);
 }
 
 .c-label--checkbox {
     margin-bottom: 0;
-    margin-left: 8px;
+    margin-left: var(--global-baseline);
 }
 /* If a input is focused within the form-field class change te color of the label */
 
@@ -608,14 +613,15 @@ input {
 
 .c-button {
     width: 100%;
-    border: 1px solid var(--global-color-alpha-dark);
+    border: var(--global-borderwidth) solid var(--global-color-alpha-dark);
     background-color: var(--global-color-alpha);
     color: white;
-    border-radius: 3px;
+    border-radius: var(--global-borderradius);
     font-family: inherit;
     font-size: 16px;
-    line-height: 24px;
+    line-height: calc(var(--global-baseline)*3);
     padding: 11px 16px;
+    padding: calc(var(--global-baseline*1.5 - var(--global-borderwidth)) calc(var(--global-baseline) *2));
     outline: none;
     transition: all .1s ease;
 }
@@ -666,23 +672,23 @@ input {
 }
 
 .u-mb-xs {
-    margin-bottom: 4px !important;
+    margin-bottom: var(--global-whitespace-xs) !important;
 }
 
 .u-mb-sm {
-    margin-bottom: 8px !important;
+    margin-bottom: var(--global-whitespace-sm) !important;
 }
 
 .u-mb-md {
-    margin-bottom: 16px !important;
+    margin-bottom: var(--global-whitespace-md) !important;
 }
 
 .u-mb-lg {
-    margin-bottom: 32px !important;
+    margin-bottom: var(--global-whitespace-lg) !important;
 }
 
 .u-mb-xl {
-    margin-bottom: 48px !important;
+    margin-bottom: var(--global-whitespace-xl) !important;
 }
 
 
